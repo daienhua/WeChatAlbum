@@ -1,13 +1,15 @@
 # Album
-Android自定义相册，完全仿微信UI，实现了拍照、选取一张图片、选取图片并裁剪，选取多张图片等功能。<p>
+Android自定义相册，为了方便公司或者自己的开发，抽空准备整理出一个比较完善的库，方便以后开发可以随时拉取代码。如果你对这部分的代码感兴趣，欢迎引入使用，如果引用过程中发现遇到什么闪退，麻烦在Github上给我提个issue，我会尽快定位修复。<p>
 
-![截屏1](https://github.com/daienhua/Album/blob/master/screenshots/1.png)
+![截屏1](https://github.com/daienhua/WeChatAlbum/blob/master/screenshots/1.jpg)
 
-![截屏2](https://github.com/daienhua/Album/blob/master/screenshots/2.png)
+![截屏2](https://github.com/daienhua/WeChatAlbum/blob/master/screenshots/2.jpg)
 
-![截屏3](https://github.com/daienhua/Album/blob/master/screenshots/3.png)
+![截屏3](https://github.com/daienhua/WeChatAlbum/blob/master/screenshots/3.jpg)
 
-![截屏4](https://github.com/daienhua/Album/blob/master/screenshots/4.png)
+![截屏4](https://github.com/daienhua/WeChatAlbum/blob/master/screenshots/4.jpg)
+
+![截屏4](https://github.com/daienhua/WeChatAlbum/blob/master/screenshots/5.jpg)
 
 
 # How to<p>
