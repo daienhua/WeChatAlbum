@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_dir_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/album_space_normal"
+        android:paddingLeft="@dimen/album_space_large"
+        android:paddingTop="@dimen/album_space_normal">
+
+        <ImageView
+            android:id="@+id/cover"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_album_image_default" />
+
+        <TextView
+            android:id="@+id/id_dir_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:ellipsize="end"
+            android:maxEms="6"
+            android:singleLine="true"
+            android:text="所有图片"
+            android:textColor="#333333"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/id_dir_item_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/album_space_normal"
+            android:layout_weight="1"
+            android:text=""
+            android:textColor="#cccccc"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/id_dir_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_album_dir_item_selected"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</RelativeLayout>

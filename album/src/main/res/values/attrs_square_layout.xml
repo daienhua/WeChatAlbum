@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="ratio" format="float" />
+    <attr name="orientation">
+        <enum name="horizontal" value="0" />
+        <enum name="vertical" value="1" />
+    </attr>
+
+    <declare-styleable name="SquareRelativeLayout">
+        <!-- Ratio for SquareRelativeLayout. -->
+        <attr name="ratio" />
+        <attr name="orientation" />
+    </declare-styleable>
+
+    <declare-styleable name="SquareLinearLayout">
+        <!-- Ratio for SquareLinearLayout. -->
+        <attr name="ratio" />
+        <attr name="orientation" />
+    </declare-styleable>
+</resources>

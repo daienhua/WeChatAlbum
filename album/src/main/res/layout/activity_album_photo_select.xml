@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/layout_album_header"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header"
+        android:layout_marginBottom="@dimen/album_footbar_size"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/list_frame"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#ffffff">
+
+            <GridView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:cacheColorHint="@android:color/transparent"
+                android:clipToPadding="false"
+                android:horizontalSpacing="5dp"
+                android:listSelector="@android:color/transparent"
+                android:numColumns="3"
+                android:padding="5dp"
+                android:verticalSpacing="5dp" />
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#e5e5e5" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/image_folder_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/album_footbar_size"
+        android:clickable="true"
+        android:fillViewport="true"
+        android:focusable="true"
+        android:scrollbars="vertical"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/image_folder_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ff000000" />
+
+            <ListView
+                android:id="@+id/id_list_dirs"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="bottom"
+                android:divider="#e5e5e5"
+                android:dividerHeight="1px" />
+        </FrameLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/bottom_capture"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/album_footbar_size"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="@color/album_colorPrimary">
+
+        <TextView
+            android:id="@+id/folder_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:background="@drawable/bg_album_selecter"
+            android:drawablePadding="@dimen/album_space_mini"
+            android:drawableRight="@drawable/ic_album_select_photo_drop_up"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxEms="8"
+            android:paddingLeft="@dimen/album_space_normal"
+            android:paddingRight="@dimen/album_space_normal"
+            android:singleLine="true"
+            android:text="@string/album_all_picture"
+            android:textColor="@color/selecter_album_photo_text"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/preview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@drawable/bg_album_selecter"
+            android:gravity="center"
+            android:paddingLeft="@dimen/album_space_normal"
+            android:paddingRight="@dimen/album_space_normal"
+            android:text="@string/album_preview"
+            android:textColor="@color/selecter_album_photo_text"
+            android:textSize="16sp" />
+
+    </FrameLayout>
+</RelativeLayout>

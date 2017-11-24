@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="album_space_smaller">3dp</dimen>
+    <dimen name="album_space_mini">5dp</dimen>
+    <dimen name="album_space_normal">8dp</dimen>
+    <dimen name="album_space_middle">12dp</dimen>
+    <dimen name="album_space_large">16dp</dimen>
+    <dimen name="album_space_xlarge">24dp</dimen>
+    <dimen name="album_space_xxlarge">32dp</dimen>
+
+    <dimen name="album_toolbar_size">48dp</dimen>
+    <dimen name="album_footbar_size">50dp</dimen>
+
+</resources>

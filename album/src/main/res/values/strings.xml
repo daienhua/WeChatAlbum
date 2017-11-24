@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AlbumLib</string>
+
+    <!--选择图片-->
+    <string name="album_all_picture">所有图片</string>
+    <string name="album_preview">预览</string>
+    <string name="album">相册</string>
+    <string name="album_sure">确定</string>
+    <string name="album_sure_with_count">确定(%s/%s)</string>
+    <string name="album_complete">完成</string>
+    <string name="album_complete_with_count">完成(%s)</string>
+    <string name="album_preview_with_count">预览(%s)</string>
+    <string name="album_msg_no_camera">No system camera found</string>
+    <string name="album_msg_no_crop">No crop found</string>
+    <string name="album_msg_no_sdcard">No SD card found</string>
+    <string name="album_msg_amount_limit">最多只能选择%s张照片</string>
+    <string name="album_save">保存</string>
+    <string name="album_picture_saved_to_storage">图片已被保持至%s</string>
+</resources>

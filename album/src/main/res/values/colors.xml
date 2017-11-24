@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="album_colorPrimary">#393a3f</color>
+    <color name="album_colorPrimaryDark">#303135</color>
+    <color name="album_colorAccent">#FF4081</color>
+
+    <!--主色 正常颜色-->
+    <color name="album_main_color_normal">#2f6732</color>
+    <!--主色 按下效果颜色-->
+    <color name="album_main_color_pressed">#26ab28</color>
+</resources>

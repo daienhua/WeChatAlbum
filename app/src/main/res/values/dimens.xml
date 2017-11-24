@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="space_smaller">3dp</dimen>
+    <dimen name="space_mini">5dp</dimen>
+    <dimen name="space_normal">8dp</dimen>
+    <dimen name="space_middle">12dp</dimen>
+    <dimen name="space_large">16dp</dimen>
+    <dimen name="space_xlarge">24dp</dimen>
+    <dimen name="space_xxlarge">32dp</dimen>
+
+</resources>
