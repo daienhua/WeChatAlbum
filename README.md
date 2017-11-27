@@ -31,4 +31,109 @@ Add the dependency<p>
 	}
   
 ## Use<p>
-查看demo
+### 选择一张图片
+    private static final int REQUEST_CODE_SELECT_SINGLE = 100;
+    /**
+     * 选择单张图片
+     */
+    private void selectSinglePhoto() {
+        Intent intent = new Intent(TestSelectPhotoActivity.this, PhotoSelectActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(PhotoSelectActivity.EXTRA_SHOW_CAMERA, true);
+        bundle.putInt(PhotoSelectActivity.EXTRA_SELECT_MODE, PhotoSelectActivity.MODE_SINGLE);
+        bundle.putInt(PhotoSelectActivity.EXTRA_SELECT_COUNT, 1);
+        intent.putExtras(bundle);
+        startActivityForResult(intent, REQUEST_CODE_SELECT_SINGLE);
+    }
+    
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != Activity.RESULT_OK) {
+            return;
+        }
+        switch (requestCode) {
+            case REQUEST_CODE_SELECT_SINGLE:
+                if (data != null) {
+                    Image image = (Image) data.getExtras().getSerializable(PhotoSelectActivity.EXTRA_RESULT);
+                    if (image != null) {
+                        //TODO
+                    }
+                }
+                break;
+            }
+        }
+    }
+    
+### 选择单张图片并裁剪
+    private static final int REQUEST_CODE_SELECT_CROP = 101;
+    /**
+     * 选择单张图片并裁剪
+     */
+    private void selectSinglePhotoCrop() {
+        Intent intent = new Intent(TestSelectPhotoActivity.this, PhotoSelectActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(PhotoSelectActivity.EXTRA_SHOW_CAMERA, true);
+        bundle.putInt(PhotoSelectActivity.EXTRA_SELECT_MODE, PhotoSelectActivity.MODE_CROP);
+        bundle.putInt(PhotoSelectActivity.EXTRA_SELECT_COUNT, 1);
+        //设置裁剪宽高比
+        //bundle.putInt(PhotoSelectActivity.EXTRA_CROP_ASPECTX, 1);
+        //bundle.putInt(PhotoSelectActivity.EXTRA_CROP_ASPECTY, 1);
+        bundle.putInt(PhotoSelectActivity.EXTRA_CROP_OUTPUTX, 400);
+        bundle.putInt(PhotoSelectActivity.EXTRA_CROP_OUTPUTY, 400);
+        intent.putExtras(bundle);
+        startActivityForResult(intent, REQUEST_CODE_SELECT_CROP);
+    }
+    
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != Activity.RESULT_OK) {
+            return;
+        }
+        switch (requestCode) {
+            case REQUEST_CODE_SELECT_CROP:
+                if (data != null) {
+                    Image image = (Image) data.getExtras().getSerializable(PhotoSelectActivity.EXTRA_RESULT);
+                    if (image != null) {
+                        //TODO
+                    }
+                }
+                break;
+            }
+        }
+    }
+        
+### 选择多张图片
+    private static final int REQUEST_CODE_SELECT_MULTI = 102;
+    private ArrayList<Image> mPictures = new ArrayList<>();
+    /**
+    * 选择多张图片
+    */
+    private void selectMultiPhoto() {
+       Intent intent = new Intent(TestSelectPhotoActivity.this, PhotoSelectActivity.class);
+       Bundle bundle = new Bundle();
+       bundle.putBoolean(PhotoSelectActivity.EXTRA_SHOW_CAMERA, true);
+       bundle.putInt(PhotoSelectActivity.EXTRA_SELECT_MODE, PhotoSelectActivity.MODE_MULTI);
+       bundle.putInt(PhotoSelectActivity.EXTRA_SELECT_COUNT, 9);
+       bundle.putSerializable(PhotoSelectActivity.EXTRA_DEFAULT_SELECTED_LIST, mPictures);
+       intent.putExtras(bundle);
+       startActivityForResult(intent, REQUEST_CODE_SELECT_MULTI);
+    }
+    
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+       if (resultCode != Activity.RESULT_OK) {
+           return;
+       }
+       switch (requestCode) {
+           case REQUEST_CODE_SELECT_MULTI:
+               if (data != null) {
+                   ArrayList<Image> images = (ArrayList<Image>) data.getExtras().getSerializable(PhotoSelectActivity.EXTRA_RESULT);
+                   if (images != null && images.size() != 0) {
+                       mPictures.clear();
+                       mPictures.addAll(images);
+                       //TODO
+                   }
+               }
+           }
+       }
+    }

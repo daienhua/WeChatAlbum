@@ -145,7 +145,6 @@ public class TestSelectPhotoActivity extends AppCompatActivity implements TestSe
         bundle.putBoolean(PhotoSelectActivity.EXTRA_SHOW_CAMERA, true);
         bundle.putInt(PhotoSelectActivity.EXTRA_SELECT_MODE, PhotoSelectActivity.MODE_SINGLE);
         bundle.putInt(PhotoSelectActivity.EXTRA_SELECT_COUNT, 1);
-        bundle.putSerializable(PhotoSelectActivity.EXTRA_DEFAULT_SELECTED_LIST, mPictures);
         intent.putExtras(bundle);
         startActivityForResult(intent, REQUEST_CODE_SELECT_SINGLE);
     }
@@ -165,7 +164,6 @@ public class TestSelectPhotoActivity extends AppCompatActivity implements TestSe
         //设置裁剪尺寸
         bundle.putInt(PhotoSelectActivity.EXTRA_CROP_OUTPUTX, 400);
         bundle.putInt(PhotoSelectActivity.EXTRA_CROP_OUTPUTY, 400);
-        bundle.putSerializable(PhotoSelectActivity.EXTRA_DEFAULT_SELECTED_LIST, mPictures);
         intent.putExtras(bundle);
         startActivityForResult(intent, REQUEST_CODE_SELECT_CROP);
     }
