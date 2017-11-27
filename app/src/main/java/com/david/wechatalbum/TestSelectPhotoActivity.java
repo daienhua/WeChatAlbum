@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.david.album.Image;
 import com.david.album.PhotoSelectActivity;
 import com.david.album.utils.AndroidUtils;
@@ -115,7 +116,7 @@ public class TestSelectPhotoActivity extends AppCompatActivity implements TestSe
                     if (image != null) {
                         mImageView.setVisibility(View.VISIBLE);
                         mLlImageLayout.setVisibility(View.GONE);
-                        Glide.with(this).load(image.getFilePath()).placeholder(R.drawable.ic_album_image_default).fitCenter().centerCrop().into(mImageView);
+                        Glide.with(this).load(image.getFilePath()).apply(RequestOptions.placeholderOf(R.drawable.ic_album_image_default).centerCrop()).into(mImageView);
                     }
                 }
                 break;

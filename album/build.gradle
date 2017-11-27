@@ -5,16 +5,12 @@ group = 'com.github.daienhua'
 android {
     compileSdkVersion 25
 
-
-
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -37,7 +33,7 @@ dependencies {
     compile "com.android.support:recyclerview-v7:25.4.0"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
-    compile "com.github.bumptech.glide:glide:3.7.0"
+    compile "com.github.bumptech.glide:glide:4.3.1"
     compile "io.reactivex:rxjava:1.2.7"
     compile "com.tbruyelle.rxpermissions:rxpermissions:0.8.0@aar"
     compile "com.github.chrisbanes.photoview:library:1.2.4"

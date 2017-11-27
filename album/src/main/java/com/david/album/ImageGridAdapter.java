@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -187,7 +188,7 @@ public class ImageGridAdapter extends BaseAdapter {
             }
             File imageFile = new File(data.getFilePath());
 
-            Glide.with(mActivity).load(imageFile).placeholder(R.drawable.ic_album_image_default).fitCenter().centerCrop().into(image);
+            Glide.with(mActivity).load(imageFile).apply(RequestOptions.placeholderOf(R.drawable.ic_album_image_default).centerCrop()).into(image);
         }
     }
 }

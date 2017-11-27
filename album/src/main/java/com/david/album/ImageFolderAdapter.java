@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.io.File;
 import java.util.List;
@@ -79,7 +80,7 @@ public class ImageFolderAdapter extends BaseAdapter {
         }
 
         File imageFile = new File(getItem(position).images.get(0).getFilePath());
-        Glide.with(mActivity).load(imageFile).placeholder(R.drawable.ic_album_image_default).fitCenter().centerCrop().into(holder.cover);
+        Glide.with(mActivity).load(imageFile).apply(RequestOptions.placeholderOf(R.drawable.ic_album_image_default).centerCrop()).into(holder.cover);
         return convertView;
     }
 

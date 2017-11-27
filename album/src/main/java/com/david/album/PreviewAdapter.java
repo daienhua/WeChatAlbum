@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.david.album.view.RecyclingPagerAdapter;
 
@@ -38,10 +39,9 @@ public class PreviewAdapter extends RecyclingPagerAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         final Image image = mImages.get(position);
-        Glide.with(mActivity)
+        Glide.with(mActivity).asBitmap()
                 .load(new File(image.getFilePath()))
-                .asBitmap()
-                .fitCenter()
+                .apply(RequestOptions.fitCenterTransform())
                 .into(new BitmapImageViewTarget(holder.mImage) {
                     @Override
                     protected void setResource(Bitmap resource) {

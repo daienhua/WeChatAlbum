@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.david.album.Image;
 
 import java.util.ArrayList;
@@ -107,7 +108,7 @@ public class TestSelectPhotoAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
 
         public void renderImage(final TestSelectPhotoAdapter adapter, final Activity fragment, final Image image) {
-            Glide.with(fragment).load(image.getFilePath()).placeholder(R.drawable.ic_album_image_default).fitCenter().centerCrop().into(mIcon);
+            Glide.with(fragment).load(image.getFilePath()).apply(RequestOptions.placeholderOf(R.drawable.ic_album_image_default).centerCrop()).into(mIcon);
             mClose.setVisibility(View.VISIBLE);
             mClose.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -28,10 +28,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
 
     compile "com.android.support:recyclerview-v7:25.4.0"
-    compile "com.github.bumptech.glide:glide:3.7.0"
+    compile "com.github.bumptech.glide:glide:4.3.1"
     compile "io.reactivex:rxjava:1.2.7"
     compile "com.tbruyelle.rxpermissions:rxpermissions:0.8.0@aar"
 
     compile project(':album')
-//    compile 'com.github.daienhua:Album:1.0'
+//    compile 'com.github.daienhua:WeChatAlbum:1.0'
 }
