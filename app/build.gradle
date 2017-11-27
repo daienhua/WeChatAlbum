@@ -33,5 +33,5 @@ dependencies {
     compile "com.tbruyelle.rxpermissions:rxpermissions:0.8.0@aar"
 
     compile project(':album')
-//    compile 'com.github.daienhua:WeChatAlbum:1.0'
+//    compile 'com.github.daienhua:WeChatAlbum:1.0.1'
 }
