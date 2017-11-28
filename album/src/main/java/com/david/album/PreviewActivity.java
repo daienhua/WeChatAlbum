@@ -12,7 +12,10 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.david.album.fullscreen.SystemUiHider;
+import com.david.album.utils.AndroidUtils;
 import com.david.album.view.ViewPagerFixed;
+import com.nineoldandroids.animation.ObjectAnimator;
 
 import java.util.ArrayList;
 
@@ -20,13 +23,15 @@ import java.util.ArrayList;
  * 预览图片
  */
 public class PreviewActivity extends Activity {
-    RelativeLayout mBack;
-    FrameLayout mHeader;
-    ViewPagerFixed mPager;
-    TextView mComplete;
-    FrameLayout mFooter;
-    TextView mImagePosition;
-    CheckBox mSelected;
+    private RelativeLayout mBack;
+    private FrameLayout mHeader;
+    private ViewPagerFixed mPager;
+    private TextView mComplete;
+    private FrameLayout mFooter;
+    private TextView mImagePosition;
+    private CheckBox mSelected;
+    private SystemUiHider mSystemUiHider;
+    private int mShortAnimTime;
 
     private ArrayList<Image> mImages;
 
@@ -50,7 +55,6 @@ public class PreviewActivity extends Activity {
             mImagePosition.setText(1 + "/" + mImages.size());
             mComplete.setText(getResources().getString(R.string.album_complete_with_count, mImages.size() + ""));
         }
-
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +62,36 @@ public class PreviewActivity extends Activity {
             }
         });
 
-        PreviewAdapter adapter = new PreviewAdapter(this, mImages);
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mHeader.getLayoutParams();
+        params.topMargin = AndroidUtils.getStatusBarHeight(this);
+        mHeader.setLayoutParams(params);
+
+        mSystemUiHider = SystemUiHider.getInstance(this, SystemUiHider.FLAG_HIDE_NAVIGATION);
+        mSystemUiHider.setup();
+        mSystemUiHider.setOnVisibilityChangeListener(new SystemUiHider.OnVisibilityChangeListener() {
+            @Override
+            public void onVisibilityChange(boolean visible) {
+                if (mShortAnimTime == 0) {
+                    mShortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
+                }
+
+                ObjectAnimator.ofFloat(mHeader, "translationY",
+                        visible ? 0 : -AndroidUtils.dp2px(PreviewActivity.this, 48)).setDuration(mShortAnimTime).start();
+                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mHeader.getLayoutParams();
+                if (!visible) {
+                    params.topMargin = 0;
+                } else {
+                    params.topMargin = AndroidUtils.getStatusBarHeight(PreviewActivity.this);
+                }
+                mHeader.setLayoutParams(params);
+
+                ObjectAnimator.ofFloat(mFooter, "translationY", visible ? 0 : mFooter.getHeight())
+                        .setDuration(mShortAnimTime)
+                        .start();
+            }
+        });
+
+        PreviewAdapter adapter = new PreviewAdapter(this, mImages, mSystemUiHider);
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -144,6 +177,6 @@ public class PreviewActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
+        mSystemUiHider = null;
     }
 }

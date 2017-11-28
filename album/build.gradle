@@ -37,4 +37,5 @@ dependencies {
     compile "io.reactivex:rxjava:1.2.7"
     compile "com.tbruyelle.rxpermissions:rxpermissions:0.8.0@aar"
     compile "com.github.chrisbanes.photoview:library:1.2.4"
+    compile "com.nineoldandroids:library:2.4.0"
 }

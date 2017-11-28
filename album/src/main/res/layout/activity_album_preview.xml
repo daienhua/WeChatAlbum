@@ -9,17 +9,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/header"
-            layout="@layout/layout_album_preview_header"
-            android:layout_width="match_parent"
-            android:layout_height="48dp" />
-
         <com.david.album.view.ViewPagerFixed
             android:id="@+id/pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/header" />
+            android:layout_height="match_parent" />
+
+        <include
+            layout="@layout/layout_album_preview_header"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true" />
     </RelativeLayout>
 
     <FrameLayout
