@@ -30,7 +30,7 @@ import android.widget.Toast;
 import com.david.album.utils.AndroidUtils;
 import com.david.album.utils.PermissionsChecker;
 import com.david.album.view.HeightAnimation;
-import com.tbruyelle.rxpermissions.RxPermissions;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -38,7 +38,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import rx.functions.Action1;
+import io.reactivex.functions.Consumer;
+
 
 /**
  * 图片选择Activity
@@ -336,11 +337,11 @@ public class PhotoSelectActivity extends Activity {
     }
 
     private void safeShowCameraAction() {
-        RxPermissions.getInstance(this)
-                .request(Manifest.permission.CAMERA)
-                .subscribe(new Action1<Boolean>() {
+        RxPermissions rxPermissions = new RxPermissions(this);
+        rxPermissions.request(Manifest.permission.CAMERA)
+                .subscribe(new Consumer<Boolean>() {
                     @Override
-                    public void call(Boolean aBoolean) {
+                    public void accept(Boolean aBoolean) throws Exception {
                         boolean isHasPermission = PermissionsChecker.isHasCameraPermission();
                         if (isHasPermission) {
                             showCameraAction();

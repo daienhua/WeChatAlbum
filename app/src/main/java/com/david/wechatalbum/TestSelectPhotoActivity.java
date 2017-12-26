@@ -22,12 +22,13 @@ import com.bumptech.glide.request.RequestOptions;
 import com.david.album.Image;
 import com.david.album.PhotoSelectActivity;
 import com.david.album.utils.AndroidUtils;
-import com.tbruyelle.rxpermissions.Permission;
-import com.tbruyelle.rxpermissions.RxPermissions;
+import com.tbruyelle.rxpermissions2.Permission;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
 
-import rx.functions.Action1;
+import io.reactivex.functions.Consumer;
+
 
 public class TestSelectPhotoActivity extends AppCompatActivity implements TestSelectPhotoAdapter.ImageChangedListener, View.OnClickListener {
 
@@ -228,31 +229,31 @@ public class TestSelectPhotoActivity extends AppCompatActivity implements TestSe
     }
 
     private void showPermisionCheckDialog() {
-        RxPermissions.getInstance(this)
-                .requestEach(Manifest.permission.READ_EXTERNAL_STORAGE,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.READ_PHONE_STATE
-                )
-                .subscribe(new Action1<Permission>() {
-                    @Override
-                    public void call(Permission permission) {
-                        if (permission.name.equals(Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                            isHasReadExternalPermission = permission.granted;
-                            isCheckReadExternalPermission = true;
-                        } else if (permission.name.equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                            isHasWriteExternalPermission = permission.granted;
-                            isCheckWriteExternalPermission = true;
-                        }
+        RxPermissions rxPermissions = new RxPermissions(this);
 
-                        if (isCheckReadExternalPermission && isCheckWriteExternalPermission) {
-                            if (!isHasReadExternalPermission || !isHasWriteExternalPermission) {
-                                showStoragePermissionAlertDialog();
-                                return;
-                            }
-                            startUp();
-                        }
+        rxPermissions.requestEach(Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_PHONE_STATE
+        ).subscribe(new Consumer<Permission>() {
+            @Override
+            public void accept(Permission permission) throws Exception {
+                if (permission.name.equals(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                    isHasReadExternalPermission = permission.granted;
+                    isCheckReadExternalPermission = true;
+                } else if (permission.name.equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                    isHasWriteExternalPermission = permission.granted;
+                    isCheckWriteExternalPermission = true;
+                }
+
+                if (isCheckReadExternalPermission && isCheckWriteExternalPermission) {
+                    if (!isHasReadExternalPermission || !isHasWriteExternalPermission) {
+                        showStoragePermissionAlertDialog();
+                        return;
                     }
-                });
+                    startUp();
+                }
+            }
+        });
     }
 
     private void showStoragePermissionAlertDialog() {
